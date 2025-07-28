@@ -11,13 +11,19 @@ house_path = [
 ];
 
 module main_house() {
-    //difference() {
-        main_house_rendered();
-        //main_house_holes();
-    //}
+    main_house_with_holes();
+}
+
+module main_house_with_holes() {
+    // difference() {
+    //     main_house_rendered();
+    //     main_house_holes();
+    // }
+    import("MainHouseWithHoles.stl");
 }
 
 module main_house_rendered() {
+    up(base_distance_floor+base_height)
     //main_house_shape();
     import("MainHouseShape.stl");
 }
@@ -78,7 +84,9 @@ module main_house_shape() {
 }
 
 module main_house_holes() {
+    tolerance = 0.2;
     trap = trapezoid(h=10.4, w1=21.84, w2=27.43, anchor=anchor);
+    offset_path = offset(trap, delta=4);
 
     up(base_distance_floor+base_height+door_height/2)
     right(48.1)
@@ -87,17 +95,17 @@ module main_house_holes() {
     scale([1,4,1])
     xrot(-90)
     linear_extrude(13)
-    rect([door_width, door_height], 0.39);
+    rect([door_width+tolerance, door_height+tolerance], 0.39);
 
     
     up(base_distance_floor+base_height)
     right(13)
-    fwd(-26)
+    fwd(-28)
     up(18.2)
     mirror([0,1,0])
     xrot(-90)
     linear_extrude(13)
-    rect([win_width, win_height], 0.39);
+    rect([win_width+tolerance, win_height+tolerance], 0.39);
 
     
     // trapezoid cutout
@@ -105,7 +113,7 @@ module main_house_holes() {
     right(70.2)
     fwd(9.1)
     linear_extrude(28.08)
-    stroke(trap, width=1.56, closed=true);
+    polygon(offset_path, closed=true);
 
     // RIGHT SIDE WINDOW POSITION
     ycopies(29.9, 3)
@@ -115,7 +123,7 @@ module main_house_holes() {
     xrot(90)
     yrot(90)
     linear_extrude(13)
-    rect([8.06*2, 18.33], rounding=0.26); // outer rectangle
+    rect([8.06*2+tolerance, 18.33+tolerance], rounding=0.26); // outer rectangle
     
     // LEFT SIDE WINDOWS
     ycopies(29.9, 2)
@@ -125,7 +133,7 @@ module main_house_holes() {
     xrot(90)
     yrot(90)
     linear_extrude(13)
-    rect([8.06*2, 18.33], rounding=0.26); // outer rectangle
+    rect([8.06*2+tolerance, 18.33+tolerance], rounding=0.26); // outer rectangle
 }
 
 // Right window porch detail
