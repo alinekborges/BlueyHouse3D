@@ -1,38 +1,38 @@
 include <BOSL2/std.scad>;
 
 
-base_lenght = 80;
-base_width = 80;
-base_height = 4;
-base_distance_floor=14;
+base_lenght = 104;
+base_width = 104;
+base_height = 5.2;
+base_distance_floor=18.2;
 
-base_colum_size=6;
-base_colum_height=14;
+base_colum_size=7.8;
+base_colum_height=18.2;
 
-board_width = 2.6;
-board_depth = 1;
-board_height = 15.4;
+board_width = 3.38;
+board_depth = 1.3;
+board_height = 20.02;
 num_boards = 24;
 
-porch_colum_size=2.6;
-porch_size=18;
-porch_width=45;
+porch_colum_size=3.38;
+porch_size=23.4;
+porch_width=58.5;
 
-main_house_height=36;
+main_house_height=46.8;
 
-window_dressing_height=25.6;
+window_dressing_height=33.28;
 
-door_width = 12.9;
-door_height = 24.8;
+door_width = 16.77;
+door_height = 32.24;
 
-roof_base=88;
+roof_base=114.4;
 
 anchor=LEFT+FWD;
 
-house_cut_lenght=66;
+house_cut_lenght=85.8;
 
-win_width = 11.4;
-win_height = 20.7;
+win_width = 14.82;
+win_height = 26.91;
 
 // Main wall color of the house
 COLOR_WALL            = "#FCE5A3"; // Soft pastel yellow used for exterior walls

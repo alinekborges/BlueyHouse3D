@@ -9,4 +9,4 @@ module BlueyRoofRendered() {
     import("HouseRoof.stl");
 }
 
-BlueyRoofRendered();
+BlueyRoof();
