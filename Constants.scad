@@ -1,3 +1,5 @@
+include <BOSL2/std.scad>;
+
 
 base_lenght = 80;
 base_width = 80;
@@ -28,6 +30,9 @@ roof_base=88;
 anchor=LEFT+FWD;
 
 house_cut_lenght=66;
+
+win_width = 11.4;
+win_height = 20.7;
 
 // Main wall color of the house
 COLOR_WALL            = "#FCE5A3"; // Soft pastel yellow used for exterior walls
