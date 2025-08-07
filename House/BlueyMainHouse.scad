@@ -10,8 +10,18 @@ house_path = [
     [0,house_cut_lenght],
 ];
 
+trap = trapezoid(h=10.4, w1=21.84, w2=27.43, anchor=anchor);
+trapezoid_path = offset(trap, delta=4);
+tolerance = 0.2;
+
 module main_house() {
-    main_house_with_holes();
+    main_house_with_holes_and_trapezoid();
+}
+
+module main_house_with_holes_and_trapezoid() {
+    // main_house_with_holes();
+    // positioned_trapezoid_shell();
+    import("MainHouseWithHolesAndTrapezoid.stl");
 }
 
 module main_house_with_holes() {
@@ -19,12 +29,12 @@ module main_house_with_holes() {
     //     main_house_rendered();
     //     main_house_holes();
     // }
-    import("MainHouseWithHoles.stl");
+   import("MainHouseWithHoles.stl");
 }
 
 module main_house_rendered() {
     up(base_distance_floor+base_height)
-    //main_house_shape();
+    // main_house_shape();
     import("MainHouseShape.stl");
 }
 
@@ -44,7 +54,7 @@ module main_house_shape() {
 
         inner_path = offset(house_path, delta=0);
         linear_extrude(main_house_height+65)
-        stroke(inner_path, width=5.2, closed=true);
+        stroke(inner_path, width=4, closed=true);
     }
 
     linear_extrude(1.3)
@@ -85,8 +95,6 @@ module main_house_shape() {
 
 module main_house_holes() {
     tolerance = 0.2;
-    trap = trapezoid(h=10.4, w1=21.84, w2=27.43, anchor=anchor);
-    offset_path = offset(trap, delta=4);
 
     up(base_distance_floor+base_height+door_height/2)
     right(48.1)
@@ -113,7 +121,7 @@ module main_house_holes() {
     right(70.2)
     fwd(9.1)
     linear_extrude(28.08)
-    polygon(offset_path, closed=true);
+    polygon(trapezoid_path, closed=true);
 
     // RIGHT SIDE WINDOW POSITION
     ycopies(29.9, 3)
@@ -136,30 +144,79 @@ module main_house_holes() {
     rect([8.06*2+tolerance, 18.33+tolerance], rounding=0.26); // outer rectangle
 }
 
-// Right window porch detail
+// Right trapezoid detail House
+
+module trapezoid_with_holes() {
+    all_right_windows_cut_base();
+}
+
+module positioned_trapezoid_shell() {
+    up(base_distance_floor+base_height+3.38)
+    right(70.2)
+    fwd(12.1)
+    difference() { 
+        right_trapezoid_shell();
+        up(12)
+        fwd(4)
+        right(5)
+        trapezoid_with_holes();
+    }
+}
+
+module right_trapezoid_shell() {
+
+        texture_tight = [for (i=[0:29])
+    [for (j=[0:9])
+        // Create long horizontal bricks with mortar lines
+        (i % 10 < 9) ? 1 : 0.2 ]];
+
+    intersection() {
+    
+        linear_sweep(
+        trapezoid_path, texture=texture_tight, tex_size=[6.5,6.5],
+        tex_depth=0.3, h=30.68);
+
+        linear_extrude(40)
+        stroke(trapezoid_path, width=3, closed=true);
+    }
+    // linear_extrude(28.08)
+    // stroke(trapezoid_path, width=2.5, closed=true);
+
+    linear_extrude(1)
+    polygon(trapezoid_path, closed=true);
+
+    up(29.68)
+    linear_extrude(1)
+    polygon(trapezoid_path, closed=true);
+}
 
 module all_right_windows_cut_base() {
 
-    back(3.9)
+    // back(3.9)
+    // xrot(90)
+    // right_window_cut_base();
+
+    // right(10.4)
+    // back(3.9)
+    // xrot(90)
+    // right_window_cut_base();
+
+    right(6)
+    back(4)
+    xcopies(12,2)
     xrot(90)
     right_window_cut_base();
 
-    right(10.4)
-    back(3.9)
-    xrot(90)
-    right_window_cut_base();
-
-    right(20.15)
-    back(5.2)
-    zrot(71.5)
+    right(22.15)
+    back(9.2)
+    zrot(72.5)
     xrot(90)
     up(-3.9)
     right_window_cut_base();
-
     
-    right(-7.15)
-    back(6.5)
-    zrot(-71.5)
+    right(-10.15)
+    back(9.5)
+    zrot(-72.5)
     xrot(90)
     up(-3.9)
     right_window_cut_base();
@@ -167,5 +224,5 @@ module all_right_windows_cut_base() {
 
 module right_window_cut_base() {
     linear_extrude(6.5)
-    rect([8.06, 18.33], rounding=0.26); // outer rectangle
+    rect([9.06+tolerance, 18.33+tolerance], rounding=0.26); // outer rectangle
 }
