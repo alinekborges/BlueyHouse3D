@@ -15,6 +15,11 @@ trap = trapezoid(h=10.4, w1=21.84, w2=27.43, anchor=anchor);
 trapezoid_path = offset(trap, delta=4);
 tolerance = 0.2;
 
+module BlueyHouseRendered() {
+    color(COLOR_WALL)
+    import("BlueyHouse.stl");
+}
+
 module main_house() {
     difference() {
         intersection() {
@@ -32,6 +37,7 @@ module main_house() {
 module main_house_with_holes_and_trapezoid() {
     // main_house_with_holes();
     // positioned_trapezoid_shell();
+    up(base_height)
     import("MainHouseWithHolesAndTrapezoid.stl");
 }
 

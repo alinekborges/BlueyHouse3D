@@ -2,7 +2,7 @@ include <../Constants.scad>;
 include <BlueyBase.scad>;
 include <BOSL2/std.scad>;
 
-module BlueyBaseRenderer() {
+module BlueyBaseRendered() {
     color(COLOR_WALL)
     import("BlueyBase.stl");
 }

@@ -9,7 +9,7 @@ include <../Constants.scad>;
 //     cube([6.5,6.5,13.0], anchor=BOTTOM);
 // }
 
-module roof_rendered() {
+module BlueyRoofRendered() {
     color(COLOR_ROOF)
     import("HouseRoof.stl");
 }
