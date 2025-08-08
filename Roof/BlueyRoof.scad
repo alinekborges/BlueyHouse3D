@@ -9,6 +9,11 @@ include <../Constants.scad>;
 //     cube([6.5,6.5,13.0], anchor=BOTTOM);
 // }
 
+module roof_rendered() {
+    color(COLOR_ROOF)
+    import("HouseRoof.stl");
+}
+
 module roof_ready_to_render() {
     difference() {
         positioned_main_roof();
@@ -35,7 +40,9 @@ module positioned_filled_roof() {
     up(base_distance_floor+base_height+window_dressing_height+11.7)
     filled_roof_triangle([0, base_lenght]);
 
-    cube([130,130, 66.3], anchor=BOTTOM+LEFT+FWD);
+    fwd(20)
+    left(10)
+    cube([150,150, 66.3], anchor=BOTTOM+LEFT+FWD);
 }
 
 module positioned_main_roof() {
@@ -46,7 +53,7 @@ module positioned_main_roof() {
         right(roof_base/2-9.1)
         combined_roof();
 
-        back(house_cut_lenght)
+        back(house_cut_lenght+2)
         left(13)
         cube([156,130, 130], anchor=BOTTOM+LEFT+FWD);
     }
@@ -84,7 +91,7 @@ module full_roof() {
 module positioned_triangle_roof() {
     color(COLOR_ROOF)
     right(33.15)
-    fwd(5.2)
+    fwd(8.2)
     roof_triangle_full();
 }
 

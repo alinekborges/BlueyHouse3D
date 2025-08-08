@@ -1,5 +1,6 @@
 include <BOSL2/std.scad>;
 include <../Constants.scad>;
+include <../Roof/BlueyRoof.scad>;
 
 house_path = [
     [0,23.4],
@@ -15,7 +16,17 @@ trapezoid_path = offset(trap, delta=4);
 tolerance = 0.2;
 
 module main_house() {
-    main_house_with_holes_and_trapezoid();
+    difference() {
+        intersection() {
+            main_house_with_holes_and_trapezoid();
+            positioned_filled_roof();
+        }
+        down(0.2)
+        //back(2)
+        roof_rendered();
+    }
+
+    //roof_rendered();
 }
 
 module main_house_with_holes_and_trapezoid() {
@@ -46,7 +57,7 @@ module main_house_shape() {
         // Create long horizontal bricks with mortar lines
         (i % 20 < 19) ? 1 : 0.2 ]];
 
-    
+     
     intersection() {
         linear_sweep(
         house_path, texture=texture, tex_size=[6.5,6.5],
