@@ -29,19 +29,20 @@ module roof_ready_to_render() {
 }
 
 module positioned_filled_roof() {
-    up(base_distance_floor+base_height+window_dressing_height+5.85)
+    up(base_distance_floor+base_height+window_dressing_height+5.85+3)
     back(roof_base/2)
     right(roof_base/2-9.1)
     prismoid(size1=[roof_base,base_lenght], size2=[1,base_lenght-54.6], xang=50, h=50.44, anchor=BOTTOM);
 
     right(48.1)
     back(54.6)
-    down(3.9)
+    down(3.9 - 3)
     up(base_distance_floor+base_height+window_dressing_height+11.7)
     filled_roof_triangle([0, base_lenght]);
 
     fwd(20)
     left(10)
+    up(4)
     cube([150,150, 66.3], anchor=BOTTOM+LEFT+FWD);
 }
 

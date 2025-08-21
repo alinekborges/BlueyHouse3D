@@ -12,7 +12,7 @@ board_spacing = 0.3; // Gap between boards
 pattern_height = 0.4; // Thickness of the pattern
 
 module base() {
-    up(base_height+base_distance_floor) {
+    up(base_distance_floor) {
         color(COLOR_ROOF)
         linear_extrude(base_height-pattern_height)
         rect([base_width, house_cut_lenght], rounding=0.5, anchor=BOTTOM+LEFT);

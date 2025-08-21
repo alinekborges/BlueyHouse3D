@@ -2,9 +2,11 @@ include <../Constants.scad>;
 include <BlueyMainHouse.scad>;
 include <BOSL2/std.scad>;
 
+$fn=60;
+
 module BlueyMainHouseRendered() {
     color(COLOR_WALL)
-    import("BlueyHouse.stl");
+    import("MainHouseWithHoles.stl");
 }
 
 module BlueyMainHouse() {
@@ -12,4 +14,19 @@ module BlueyMainHouse() {
     main_house();
 }
 
-BlueyMainHouse();
+//BlueyMainHouse();
+
+// 1. Render main shape
+//main_house_rendered(); // => MainHouseShape.stl
+
+// 2. Render with holes
+//main_house_with_holes(); // MainHouseWithHoles.stl
+
+// 3. Render with trapezoid
+//main_house_with_holes_and_trapezoid(); // MainHouseWithHolesAndTrapezoid.stl
+
+// 4. Render main house
+ main_house();
+
+
+//BlueyMainHouse();

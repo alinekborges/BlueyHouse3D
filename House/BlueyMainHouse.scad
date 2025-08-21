@@ -17,28 +17,31 @@ tolerance = 0.2;
 
 module BlueyHouseRendered() {
     color(COLOR_WALL)
+    //main_house();
     import("BlueyHouse.stl");
 }
 
 module main_house() {
-    difference() {
+   difference() {
         intersection() {
             main_house_with_holes_and_trapezoid();
             positioned_filled_roof();
         }
-        down(0.2)
+
+        // down(2)
         //back(2)
-        roof_rendered();
+        up(3)
+        BlueyRoofRendered();
     }
 
-    //roof_rendered();
+    // up(2)
+    // BlueyRoofRendered();
 }
 
 module main_house_with_holes_and_trapezoid() {
-    // main_house_with_holes();
-    // positioned_trapezoid_shell();
-    up(base_height)
-    import("MainHouseWithHolesAndTrapezoid.stl");
+    main_house_with_holes();
+    positioned_trapezoid_shell();
+    //import("MainHouseWithHolesAndTrapezoid.stl");
 }
 
 module main_house_with_holes() {
@@ -50,7 +53,7 @@ module main_house_with_holes() {
 }
 
 module main_house_rendered() {
-    up(base_distance_floor+base_height)
+    // up(base_distance_floor)
     // main_house_shape();
     import("MainHouseShape.stl");
 }
@@ -63,19 +66,19 @@ module main_house_shape() {
         // Create long horizontal bricks with mortar lines
         (i % 20 < 19) ? 1 : 0.2 ]];
 
-     
+    inner_path = offset(house_path, delta=-2);
+
     intersection() {
         linear_sweep(
-        house_path, texture=texture, tex_size=[6.5,6.5],
-        tex_depth=0.65, h=main_house_height+52);
+        inner_path, texture=texture, tex_size=[6.5,6.5],
+        tex_depth=1, h=main_house_height+52);
 
-        inner_path = offset(house_path, delta=0);
         linear_extrude(main_house_height+65)
         stroke(inner_path, width=4, closed=true);
     }
 
     linear_extrude(1.3)
-    polygon(house_path);
+    polygon(inner_path);
 
 
     // stroke(inset_path, width=1.56, closed=true)  ;
@@ -173,6 +176,7 @@ module positioned_trapezoid_shell() {
     fwd(12.1)
     difference() { 
         right_trapezoid_shell();
+
         up(12)
         fwd(4)
         right(5)
@@ -237,6 +241,13 @@ module all_right_windows_cut_base() {
     xrot(90)
     up(-3.9)
     right_window_cut_base();
+
+    
+    back(13)
+    down(10)
+    left(5)
+    linear_extrude(26)
+    polygon(trapezoid_path, closed=true);
 }
 
 module right_window_cut_base() {
