@@ -39,9 +39,9 @@ module main_house() {
 }
 
 module main_house_with_holes_and_trapezoid() {
-    main_house_with_holes();
-    positioned_trapezoid_shell();
-    //import("MainHouseWithHolesAndTrapezoid.stl");
+    //main_house_with_holes();
+    //positioned_trapezoid_shell();
+    import("MainHouseWithHolesAndTrapezoid.stl");
 }
 
 module main_house_with_holes() {
