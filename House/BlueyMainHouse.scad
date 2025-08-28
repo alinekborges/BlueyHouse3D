@@ -31,6 +31,7 @@ module main_house() {
         // down(2)
         //back(2)
         up(3)
+        //up(base_height)
         BlueyRoofRendered();
     }
 
@@ -46,6 +47,7 @@ module main_house_with_holes_and_trapezoid() {
 
 module main_house_with_holes() {
     difference() {
+        up(base_height)
         main_house_rendered();
         main_house_holes();
     }

@@ -5,14 +5,21 @@ include <House/BlueyMainHouse.scad>;
 include <Roof/BlueyRoof.scad>;
 include <FrontPorchFence/FrontPorchFence.scad>;
 include <WindowAwenings/RightWindowAwening.scad>;
+include <FrontStairs/FrontStairs.scad>;
 
 module BlueyHouse() {
     BlueyBaseRendered();
+
     BlueyHouseRendered();
+
+    up(base_height-2)
     BlueyRoofRendered();
+    
     FrontPorchFenceRendered();
 
     WindowDressing();
+
+    FrontStairs();
 }
 
 module WindowDressing() {
