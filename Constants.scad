@@ -34,6 +34,9 @@ house_cut_lenght=85.8;
 win_width = 14.82;
 win_height = 26.91;
 
+glass_thickness = 0.6;
+tolerance = 0.2;
+
 // Main wall color of the house
 COLOR_WALL            = "#FCE5A3"; // Soft pastel yellow used for exterior walls
 

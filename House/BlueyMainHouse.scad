@@ -118,6 +118,7 @@ module main_house_shape() {
 module main_house_holes() {
     tolerance = 0.2;
 
+    // door hole
     up(base_distance_floor+base_height+door_height/2)
     right(48.1)
     fwd(-28.6)
@@ -127,7 +128,7 @@ module main_house_holes() {
     linear_extrude(13)
     rect([door_width+tolerance, door_height+tolerance], 0.39);
 
-    
+    // front left window hole
     up(base_distance_floor+base_height)
     right(13)
     fwd(-28)
@@ -146,9 +147,9 @@ module main_house_holes() {
     trapezoid_house_cutout();
 
     // RIGHT SIDE WINDOW POSITION
-    ycopies(29.9, 3)
+    ycopies(28.2, 3)
     up(base_distance_floor+base_height+19.5)
-    back(45.5)
+    back(43.5)
     right(base_width-6.5)
     xrot(90)
     yrot(90)

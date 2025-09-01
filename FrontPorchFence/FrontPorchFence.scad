@@ -1,41 +1,52 @@
 include <BOSL2/std.scad>;
+include <../WindowAwenings/PorchWindowDressing.scad>;
 include <../Constants.scad>;
 
 module FrontPorchFenceRendered() {
     color(COLOR_TRIM)
-    import("FrontPorchFence_Uncut.stl");
+    //cut_house_front_fence();
+    import("FrontPorchFence.stl");
 }
 
-// module cut_house_front_fence() {
-//     difference() {
-//    house_front_fence(); 
-//     down(1)
-//     positioned_window_dressing();
+module cut_house_front_fence() {
+    difference() {
+        house_front_fence(); 
 
-//     // down(-0.9)
-//     // positioned_window_dressing();
+        down(0.2)
+        PorchWindowDressing();
+
+        up(1)
+        PorchWindowDressing();
+
+        up(2.1)
+        PorchWindowDressing();
+
+    // down(-0.9)
+    // positioned_window_dressing();
     
 
-//     fwd(3)
-    
-//     up(base_distance_floor+base_height+window_dressing_height+6)
-//     xrot(35)
-//     cube([100,10,10], anchor=anchor);
-//     }
-// }
+        //fwd(3)
+        
+        // up(base_distance_floor+base_height+window_dressing_height+6)
+        // xrot(35)
+        // cube([100,10,10], anchor=anchor);
+    }
+
+    //PorchWindowDressing();
+}
 
 module house_front_fence() {
     up(base_distance_floor+base_height)
     color(COLOR_TRIM) {
-        linear_extrude(window_dressing_height+5)
+        linear_extrude(window_dressing_height+6.5)
         rect([porch_colum_size, porch_colum_size], anchor=anchor);
 
         right(21.32)
-        linear_extrude(window_dressing_height+5)
+        linear_extrude(window_dressing_height+6.5)
         rect([porch_colum_size, porch_colum_size], anchor=anchor);
 
         right(18.72 + porch_colum_size + 13.52)
-        linear_extrude(window_dressing_height+5)
+        linear_extrude(window_dressing_height+6.5)
         rect([porch_colum_size, porch_colum_size], anchor=anchor);
 
         // Small items
