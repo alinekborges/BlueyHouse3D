@@ -15,7 +15,7 @@ module FrontRightWindowGlass() {
     porch_right_window_glass();
 }
 
-right_window_up_position=base_distance_floor+base_height+20;
+right_window_up_position=base_distance_floor+base_height+20.5;
 
 module PositionedRightWindows() {
     // right(0.4)
