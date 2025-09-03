@@ -22,7 +22,7 @@ main_house_height=46.8;
 
 window_dressing_height=33.28;
 
-window_glass_thickness = 1.2;
+window_glass_thickness = 2;
 
 door_width = 16.77;
 door_height = 32.24;

@@ -6,7 +6,7 @@ Column_Width = 11;
 Fence_Height = base_distance_floor-2;
 Board_Width = 4;
 Board_Thickness = 2;
-Min_Spacing = 1.5;
+Min_Spacing = 1;
 Fence_Lip_Left=true;
 Fence_Lip_Right=true;
 

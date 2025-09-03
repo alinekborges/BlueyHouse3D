@@ -29,8 +29,6 @@ front_left_window_path = rect([win_width+tolerance, win_height+tolerance], 0.39)
 front_left_window_path_with_tolerance = offset(front_left_window_path, delta=-tolerance);
 
 module FrontLeftWindowGlass() {
-
-
     color(COLOR_GLASS)  
     down(glass_thickness)
     linear_extrude(glass_thickness)
@@ -71,7 +69,8 @@ module front_left_window() {
 
 module front_left_window_glass() {
     color(COLOR_GLASS)
-    linear_extrude(0.8)
+    down(glass_thickness)
+    linear_extrude(glass_thickness)
     left_window_glass();
 }
 

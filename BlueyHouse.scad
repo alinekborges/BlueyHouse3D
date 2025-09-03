@@ -11,29 +11,37 @@ include <WindowAwenings/PorchWindowDressing.scad>;
 include <Windows/SideWindows.scad>;
 include <Windows/FrontLeftWindow.scad>;
 include <Fence/BlueyFence.scad>;
+include <HouseTrimm/HouseTrimm.scad>;
+include <Windows/FrontRightWindows.scad>;
 
 module BlueyHouse() {
-    BlueyBaseRendered();
+//    BlueyBaseRendered();
 
     BlueyHouseRendered();
 
-    up(base_height-2)
-    BlueyRoofRendered();
+//    up(base_height-2)
+//    BlueyRoofRendered();
     
-    FrontPorchFenceRendered();
+//    FrontPorchFenceRendered();
 
-    WindowDressing();
+//    WindowDressing();
 
-    FrontStairs();
+//    FrontStairs();
 
-    PositionedSideWindows();
-    PositionedSideWindowGlass();
+//    PositionedSideWindows();
+//    PositionedSideWindowGlass();
 
-    PositionedFrontLeftWindow();
-    PositionedFrontLeftWindowGlass();
+//    PositionedFrontLeftWindow();
+//    PositionedFrontLeftWindowGlass();
 
-    BlueyFence();
-    BlueyPillars();
+//    BlueyFence();
+//    BlueyPillars();
+    
+//    HouseTrimm();
+
+    PositionedRightWindows();
+    PositionedRightWindowsGlass();
+
 }
 
 module WindowDressing() {
