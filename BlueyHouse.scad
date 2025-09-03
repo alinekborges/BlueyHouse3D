@@ -20,7 +20,7 @@ module BlueyHouse() {
 
     BlueyHouseRendered();
 
-   up(base_height-2)
+   up(base_height-3)
    BlueyRoofRendered();
     
    FrontPorchFenceRendered();
@@ -39,6 +39,7 @@ module BlueyHouse() {
    BlueyPillars();
     
    HouseTrimm();
+   RootTrimm();
 
     PositionedRightWindows();
     PositionedRightWindowsGlass();
