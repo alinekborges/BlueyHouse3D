@@ -15,7 +15,7 @@ module base() {
     up(base_distance_floor) {
         color(COLOR_ROOF)
         linear_extrude(base_height-pattern_height)
-        rect([base_width, house_cut_lenght], rounding=0.5, anchor=BOTTOM+LEFT);
+        rect([base_width-1, house_cut_lenght], rounding=0.5, anchor=BOTTOM+LEFT);
 
         // Wooden floor pattern on top
         color(COLOR_ROOF)

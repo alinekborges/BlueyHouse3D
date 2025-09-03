@@ -1,7 +1,7 @@
 include <BOSL2/std.scad>
 
 Total_Width = 28 * 1.3;
-Fence_Height = 13;
+Fence_Height = 18.2;
 Board_Width = 4;
 Board_Thickness = 2;
 Min_Spacing = 1.5;

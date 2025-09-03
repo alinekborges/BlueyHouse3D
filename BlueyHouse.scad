@@ -10,6 +10,7 @@ include <WindowAwenings/SideWindowDressing.scad>;
 include <WindowAwenings/PorchWindowDressing.scad>;
 include <Windows/SideWindows.scad>;
 include <Windows/FrontLeftWindow.scad>;
+include <Fence/BlueyFence.scad>;
 
 module BlueyHouse() {
     BlueyBaseRendered();
@@ -30,6 +31,9 @@ module BlueyHouse() {
 
     PositionedFrontLeftWindow();
     PositionedFrontLeftWindowGlass();
+
+    BlueyFence();
+    BlueyPillars();
 }
 
 module WindowDressing() {

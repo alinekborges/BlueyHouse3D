@@ -7,17 +7,14 @@ tolerance = 0.2;
 
 window_path = rect([side_window_width+tolerance, side_window_height+tolerance], rounding=0.26);
 
-module SideWindow() {
+module RightWindow() {
     right_window();
-}
-
-module SideWindowGlass() {
     side_window_glass();
 }
 
-side_window_up_position=base_distance_floor+base_height+19.5;
+right_window_up_position=base_distance_floor+base_height+19.5;
 
-module PositionedSideWindows() {
+module PositionedRightWindow() {
     right(0.4)
     back(54.6)
     ycopies(29.9, 2)
@@ -34,7 +31,7 @@ module PositionedSideWindows() {
     right_window();
 }
 
-module PositionedSideWindowGlass() {
+module PositionedRightWindowGlass() {
     right(0.4)
     back(54.6)
     ycopies(29.9, 2)
@@ -54,9 +51,10 @@ module PositionedSideWindowGlass() {
 
 module side_window_glass() {
 
-    down(window_glass_thickness)
+    
     color(COLOR_GLASS)
-    linear_extrude(window_glass_thickness)
+    up(0.8)
+    linear_extrude(0.6)
     window_base();
 }
 
@@ -66,16 +64,9 @@ module side_window() {
 
 module right_window() {
 
-    border_size = 1;
-    offset_border = offset(window_path, delta=0.6);
-
     color(COLOR_TRIM)
-    up(0.4)
-    linear_extrude(1)
-    difference() {
-        polygon(offset_border);
-        rect([14.7, 16.4], rounding=0.2);
-    }
+    linear_extrude(0.6)
+    stroke(window_path, width=0.6, closed=true);
 
     color(COLOR_TRIM)
     linear_extrude(0.8)
