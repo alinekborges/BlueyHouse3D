@@ -7,10 +7,42 @@ module WindowAweningsRendered() {
     //import("WindowAwenings.stl");
 }
 
+module PositionedRightWindowAwening() {
+    right(81.5)
+    up(34)
+    zrot(-90)
+    up(base_height+base_distance_floor)
+    zscale(1.1)
+    RightWindowAwening();
+}
+
+module PositionedRightWindowAweningTrimm() {
+    right(81.5)
+    up(34)
+    //fwd(40)
+    zrot(-90)
+    up(base_height+base_distance_floor)
+    RightWindowAweningTrimm();
+}
+
 module RightWindowAwening() {
     color(COLOR_ROOF)
     scale([1.5,1.4,1])
     window_awning();
+}
+
+module RightWindowAweningTrimm() {
+    path=[
+        [-0.5,-12],
+        [8.4,-9.4],
+        [8.4,9.4],
+        [-.5,12]
+    ];
+
+    color(COLOR_TRIM)   
+    scale([1.5,1.4,1.2])
+    path_extrude2d(path)
+    circle(r=0.8);
 }
 
 module window_awning() {

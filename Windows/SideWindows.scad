@@ -15,8 +15,6 @@ module SideWindowGlass() {
     right_side_window_glass();
 }
 
-side_window_up_position=base_distance_floor+base_height+19.5;
-
 module PositionedSideWindows() {
     // Left Side Windows
     right(1.4)
@@ -68,15 +66,15 @@ module side_right_window() {
     offset_border = offset(window_path, delta=0.6);
 
     color(COLOR_TRIM)
-    up(0.8)
-    linear_extrude(0.5)
+    up(1-0.4)
+    linear_extrude(0.4)
     difference() {
         polygon(offset_border);
         rect([14.7, 16.4], rounding=0.2);
     }
 
     color(COLOR_TRIM)
-    linear_extrude(0.8)
+    linear_extrude(1)
     difference() {
         
         window_base();

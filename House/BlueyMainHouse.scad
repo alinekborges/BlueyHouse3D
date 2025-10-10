@@ -1,6 +1,7 @@
 include <BOSL2/std.scad>;
 include <../Constants.scad>;
 include <../Roof/BlueyRoof.scad>;
+include <../HouseTrimm/HouseTrimm.scad>;
 
 house_path = [
     [0,23.4],
@@ -22,36 +23,52 @@ module BlueyHouseRendered() {
 }
 
 module main_house() {
+
+    roof_up_position = 4;
    difference() {
         intersection() {
-            main_house_with_holes_and_trapezoid();
+           main_house_with_holes_and_trapezoid();
+            up(roof_up_position)
             positioned_filled_roof();
         }
 
         // down(2)
         //back(2)
-        up(3)
-        //up(base_height)
+        up(roof_up_position)
         BlueyRoofRendered();
     }
 
-    // up(2)
+
+    // up(roof_up_position)
     // BlueyRoofRendered();
 }
 
 module main_house_with_holes_and_trapezoid() {
-    main_house_with_holes();
-    positioned_trapezoid_shell();
-    //import("MainHouseWithHolesAndTrapezoid.stl");
+    // main_house_with_holes();
+    // positioned_trapezoid_shell();
+    import("MainHouseWithHolesAndTrapezoid.stl");
 }
 
 module main_house_with_holes() {
-    difference() {
-        up(base_height)
-        main_house_rendered();
-        main_house_holes();
-    }
-   //import("MainHouseWithHoles.stl");
+
+difference() {
+    main_house_rendered();
+    main_house_holes();
+}
+
+    
+    
+    // difference() {
+    // color(COLOR_WALL)
+    //     up(base_height)
+    //     main_house_rendered();
+
+
+    //     main_house_holes();
+
+    //     HouseTrimm(tolerance=0.2);
+    // }
+  import("MainHouseWithHoles.stl");
 }
 
 module main_house_rendered() {
@@ -60,20 +77,21 @@ module main_house_rendered() {
     import("MainHouseShape.stl");
 }
 
+$fn=100;
 module main_house_shape() {
 
     // Long horizontal bricks texture - more realistic
     texture = [for (i=[0:29])
     [for (j=[0:9])
         // Create long horizontal bricks with mortar lines
-        (i % 20 < 19) ? 1 : 0.2 ]];
+        (i % 20 < 19) ? 2 : 0 ]];
 
     inner_path = offset(house_path, delta=-2);
 
     intersection() {
         linear_sweep(
-        inner_path, texture=texture, tex_size=[6.5,6.5],
-        tex_depth=1, h=main_house_height+52);
+        inner_path, texture=texture, tex_size=[10.5,6.5],
+        tex_depth=0.1, h=main_house_height+52);
 
         linear_extrude(main_house_height+65)
         stroke(inner_path, width=4, closed=true);
@@ -147,22 +165,20 @@ module main_house_holes() {
     trapezoid_house_cutout();
 
     // RIGHT SIDE WINDOW POSITION
-    ycopies(28.2, 3)
-    up(base_distance_floor+base_height+19.5)
+    right(base_width-10)
     back(43.5)
-    right(base_width-6.5)
-    xrot(90)
-    yrot(90)
+    ycopies(28.2, 3)
+    up(side_window_up_position)
+    rotate([90,0,90])
     linear_extrude(13)
     rect([8.06*2+tolerance, 18.33+tolerance], rounding=0.26); // outer rectangle
     
     // LEFT SIDE WINDOWS
-    ycopies(29.9, 2)
-    up(base_distance_floor+base_height+19.5)
+    right(8)
     back(54.6)
-    right(-6.5)
-    xrot(90)
-    yrot(90)
+    ycopies(29.9, 2)
+    up(side_window_up_position)
+    rotate([90,0,-90])
     linear_extrude(13)
     rect([8.06*2+tolerance, 18.33+tolerance], rounding=0.26); // outer rectangle
 }
@@ -201,7 +217,7 @@ module right_trapezoid_shell() {
         tex_depth=0.3, h=30.68);
 
         linear_extrude(40)
-        stroke(trapezoid_path, width=3, closed=true);
+        stroke(trapezoid_path, width=4, closed=true);
     }
     // linear_extrude(28.08)
     // stroke(trapezoid_path, width=2.5, closed=true);

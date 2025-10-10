@@ -7,12 +7,11 @@ module SideWindowRenderer() {
     SideWindow();
 }
 
-color(COLOR_TRIM)
-// SideWindow();
-// SideWindowGlass();
+//SideWindow();
+//SideWindowGlass();
 
-// FrontLeftWindow();
-// FrontLeftWindowGlass();
+//FrontLeftWindow();
+//FrontLeftWindowGlass();
 
-FrontRightWindow();
+//FrontRightWindow();
 FrontRightWindowGlass();

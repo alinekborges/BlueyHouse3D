@@ -15,52 +15,44 @@ include <HouseTrimm/HouseTrimm.scad>;
 include <Windows/FrontRightWindows.scad>;
 include <Door/Door.scad>;
 
-module BlueyHouse() {
-   BlueyBaseRendered();
+BlueyBaseRendered();
 
-    BlueyHouseRendered();
+BlueyHouseRendered();
 
-   up(base_height-3)
-   BlueyRoofRendered();
-    
-   FrontPorchFenceRendered();
+up(base_height-3)
+BlueyRoofRendered();
 
-   WindowDressing();
+FrontPorchFenceRendered();
 
-   FrontStairs();
+FrontStairsLeft();
+FrontStairsRight();
+FrontStairsRed();
 
-   PositionedSideWindows();
-   PositionedSideWindowGlass();
+PositionedSideWindows();
+PositionedSideWindowGlass();
 
-   PositionedFrontLeftWindow();
-   PositionedFrontLeftWindowGlass();
+PositionedFrontLeftWindow();
+PositionedFrontLeftWindowGlass();
 
-   BlueyFence();
-   BlueyPillars();
-    
-   HouseTrimm();
-   RootTrimm();
+BlueyFence();
+BlueyPillars();
 
-    PositionedRightWindows();
-    PositionedRightWindowsGlass();
+HouseTrimm();
+RoofTrimm();
 
-    Positioned_Door();
-    Positioned_Door_Glass();
+PositionedRightWindows();
+PositionedRightWindowsGlass();
 
-}
+Positioned_Door();
+Positioned_Door_Glass();
 
-module WindowDressing() {
 
-    PorchWindowDressing();
+PorchWindowDressing();
 
-    SideWindowDressing();
+PorchWindowDressingTrimm();
 
-    right(81.5)
-    up(34)
-    zrot(-90)
-    up(base_height+base_distance_floor)
-    RightWindowAwening();
+SideWindowDressing();
 
-}
+PositionedRightWindowAwening();
 
-BlueyHouse();
+PositionedRightWindowAweningTrimm();

@@ -12,16 +12,18 @@ module HouseTrimm(tolerance=0) {
     up(base_distance_floor+base_height)
     right(base_width-3)
     house_trimm_base(tolerance);
+}
 
+module RoofTrimm() {
     right(81.4)
     color(COLOR_TRIM)
-    up(base_distance_floor+base_height+44.9)
+    up(base_distance_floor+base_height+46.9)
     scale([1,0.03,1])
     roof_triangle();
 }
 
 module house_trimm_base(tolerance=0) {
-    cube([2+tolerance, 2+tolerance, 44.8+tolerance], anchor=BOTTOM+FWD+LEFT);
+    cube([2+tolerance, 2+tolerance, 44.8+2+tolerance], anchor=BOTTOM+FWD+LEFT);
 }
 
 module roof_triangle(size2) {

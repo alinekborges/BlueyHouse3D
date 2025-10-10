@@ -11,9 +11,10 @@ include <../Constants.scad>;
 
 module BlueyRoofRendered() {
     color(COLOR_ROOF)
+    up(2)
     import("HouseRoof.stl");
 }
-
+ 
 module roof_ready_to_render() {
     difference() {
         positioned_main_roof();
@@ -34,15 +35,15 @@ module positioned_filled_roof() {
     right(roof_base/2-9.1)
     prismoid(size1=[roof_base,base_lenght], size2=[1,base_lenght-54.6], xang=50, h=50.44, anchor=BOTTOM);
 
-    right(48.1)
+    right(48)
     back(54.6)
-    down(3.9 - 3)
+    down(4.2)
     up(base_distance_floor+base_height+window_dressing_height+11.7)
-    filled_roof_triangle([0, base_lenght]);
+    
+    filled_roof_triangle([1, base_lenght]);
 
     fwd(20)
     left(10)
-    up(4)
     cube([150,150, 66.3], anchor=BOTTOM+LEFT+FWD);
 }
 
@@ -65,7 +66,7 @@ module combined_roof() {
         full_roof() tag("main_roof");
 
         down(3.9)
-        scale([1,1.2,1.1])
+        scale([1,1,1.1])
         filled_roof_triangle([1, base_lenght]);
 
         right(104)

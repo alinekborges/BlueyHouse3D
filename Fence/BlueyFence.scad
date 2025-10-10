@@ -10,27 +10,29 @@ Min_Spacing = 1;
 Fence_Lip_Left=true;
 Fence_Lip_Right=true;
 
+BlueyFence();
+
 module BlueyFence() {
     //color(COLOR_FENCE)
     //import("Fence.stl");
 
-    front_fence_width = base_width-Column_Width;
+    front_fence_width = base_width-Column_Width*2;
     back(Column_Width/4)
-    right(Column_Width/2+front_fence_width/2)
+    right(Column_Width+front_fence_width/2)
     zrot(-90)
     color(COLOR_FENCE)
     Fence(front_fence_width);
 
-    side_fence_width = house_cut_lenght-Column_Width;
+    side_fence_width = house_cut_lenght-Column_Width*2;
     right(Column_Width/4)
-    back(Column_Width/2+side_fence_width/2)
+    back(Column_Width+side_fence_width/2)
     zrot(180)
     color(COLOR_FENCE)
     Fence(side_fence_width);
 
-    side_fence_width = house_cut_lenght-Column_Width;
+    side_fence_width = house_cut_lenght-Column_Width*2;
     right(base_width-Column_Width/4)
-    back(Column_Width/2+side_fence_width/2)
+    back(Column_Width+side_fence_width/2)
     color(COLOR_FENCE)
     Fence(side_fence_width);
 }
@@ -66,7 +68,7 @@ module Fence(width) {
     copies = floor(width/(Board_Width+Min_Spacing));
     spacing = max((width - copies*Board_Width) / (copies), Min_Spacing);
 
-    ycopies(spacing+Board_Width,copies)
+    ycopies(spacing + Board_Width, copies - round($t * (copies - 1)))
     rounded_fence_board();
 
     right(Board_Thickness/4)
@@ -74,14 +76,14 @@ module Fence(width) {
 
     if (Fence_Lip_Left) {
         right(Board_Thickness/4)
-        fwd(width/2+Column_Width/6)
-        Fence_Board(Width=Column_Width/3);
+        fwd(width/2+Column_Width/10-0.5)
+        Fence_Board(Width=Column_Width/5);
     }
 
     if (Fence_Lip_Right) {
         right(Board_Thickness/4)
-        back(width/2+Column_Width/6)
-        Fence_Board(Width=Column_Width/3);
+        back(width/2+Column_Width/10-0.5)
+        Fence_Board(Width=Column_Width/5);
     }
 }
 
@@ -92,12 +94,12 @@ module Base_Column() {
     linear_extrude(Column_Height)
     rect([Column_Width, Column_Width], rounding=0.5);
 
-    up(Column_Height)
+    up(Column_Height-1)
     diff() {
-        scale([1.3,1.3,1])
-        cube([Column_Width,Column_Width,2], anchor=CENTER+BOTTOM) {
+        scale([1.1,1.1,2.5])
+        cube([Column_Width,Column_Width,1], anchor=CENTER+BOTTOM) {
             edge_mask(TOP)
-            rounding_edge_mask(r=2);
+            rounding_edge_mask(r=1);
         }
     }
 }
@@ -110,26 +112,26 @@ module Column_With_Holes(Column_Hole_Left=0, Column_Hole_Right=0, Column_Hole_Fr
             fwd((Column_Width/2-Board_Thickness/2-1)*Column_Hole_Left)
             left(Column_Width/3)
             zrot(90)
-            Fence_Board(tolerance=0.4, Width=Column_Width);
+            Fence_Board(tolerance=0.3, Width=Column_Width);
         }
 
         if (Column_Hole_Right) {
             fwd((Column_Width/2-Board_Thickness/2-1)*Column_Hole_Right)
             right(Column_Width/3)
             zrot(90)
-            Fence_Board(tolerance=0.4, Width=Column_Width);
+            Fence_Board(tolerance=0.3, Width=Column_Width);
         }
 
         if (Column_Hole_Front) {
             left((Column_Width/2-Board_Thickness/2-1)*Column_Hole_Front)
             fwd(Column_Width/3)
-            Fence_Board(tolerance=0.4, Width=Column_Width);
+            Fence_Board(tolerance=0.3, Width=Column_Width);
         }
 
         if (Column_Hole_Back) {
             left((Column_Width/2-Board_Thickness/2-1)*Column_Hole_Back)
             back(Column_Width/3)
-            Fence_Board(tolerance=0.4, Width=Column_Width);
+            Fence_Board(tolerance=0.3, Width=Column_Width);
         }
     }
 }

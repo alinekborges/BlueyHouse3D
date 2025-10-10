@@ -1,4 +1,5 @@
 include <BOSL2/std.scad>
+include <../Constants.scad>
 
 Total_Width = 28 * 1.3;
 Fence_Height = 18.2;
@@ -27,20 +28,23 @@ copies = floor(Total_Width/(Board_Width+Min_Spacing));
 spacing = max((Total_Width - copies*Board_Width) / (copies), Min_Spacing);
 anchor = BOTTOM+LEFT+FWD;
 
+
+
 module Fence() {
+    
     ycopies(spacing+Board_Width,copies)
     rounded_fence_board();
 
     Fence_Board();
 
     if (Fence_Lip_Left) {
-        fwd(Total_Width/2+Column_Width/6)
-        Fence_Board(Width=Column_Width/3);
+        fwd(Total_Width/2)
+        Fence_Board(Width=Column_Width/4);
     }
 
     if (Fence_Lip_Right) {
         back(Total_Width/2+Column_Width/6)
-        Fence_Board(Width=Column_Width/3);
+        Fence_Board(Width=Column_Width/4);
     }
 }
 
@@ -116,4 +120,4 @@ module Column_With_Holes() {
 
 //Column_With_Holes();
 
-Fence();
+//Fence();

@@ -31,14 +31,11 @@ module Door() {
         door_circle_glass();
     }
     
-    path = rect([door_width, door_height], 0.3);
-    up(1.2)
-    color(COLOR_TRIM)
-    linear_extrude(0.6)
-    stroke(path, width=0.6, closed=true);
-
-    // fwd(4.5)
-    // door_circle_window();
+    // path = rect([door_width, door_height], 0.3);
+    // up(1.2)
+    // color(COLOR_TRIM)
+    // linear_extrude(0.6)
+    // stroke(path, width=0.6, closed=true);
 }
 
 module Door_Glass() {

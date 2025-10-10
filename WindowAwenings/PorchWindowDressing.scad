@@ -10,15 +10,22 @@ module PorchWindowDressing() {
     import("PorchWindowDressing.stl");
 }
 
-module window_rounded_dressing_full() {
+module PorchWindowDressingTrimm() {
+    shell_thickness = 1.5;
 
-    //difference() {
-        yscale(1.1)
-        fwd(1.2)
+    //up(base_height+base_distance_floor+34.2)
+    up(base_height+base_distance_floor+34.2)
+    window_dressing_white_trim();
+}
+
+module window_rounded_dressing_full() {
+    shell_thickness = 1.5;
+
+    difference() {
         window_rounded_dressing();
-        //fwd(2)
-        //cube([10, porch_size+20, 20]);
-    //}
+
+
+    }
     
     // right(5.2)
     // fwd(1.3)
@@ -33,9 +40,9 @@ module window_rounded_dressing_full() {
 
 module window_dressing_white_trim() {
         path=[
-        [7,porch_size+10],
-        [7,-1.2],
-        [porch_width+11,-1.2]
+        [-10,porch_size+4.5],
+        [-10,-1.8],
+        [porch_width+1,-1.8]
     ];
 
     color(COLOR_TRIM)   

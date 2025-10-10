@@ -7,4 +7,14 @@ module FrontStairsRenderer() {
 
 }
 
-FrontStairsRenderer();
+// yrot(-90) {
+//     FrontStairsLeft();
+// }
+
+// yrot(-90) {
+//     FrontStairsRed();
+// }
+
+yrot(90) {
+    FrontStairsRight();
+}

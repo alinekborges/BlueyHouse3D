@@ -22,7 +22,7 @@ main_house_height=46.8;
 
 window_dressing_height=33.28;
 
-window_glass_thickness = 2;
+window_glass_thickness = 0.6;
 
 door_width = 16.77;
 door_height = 32.24;
@@ -38,6 +38,8 @@ win_height = 26.91;
 
 glass_thickness = 0.6;
 tolerance = 0.2;
+
+side_window_up_position=base_distance_floor+base_height+19.5;
 
 // Main wall color of the house
 COLOR_WALL            = "#FCE5A3"; // Soft pastel yellow used for exterior walls

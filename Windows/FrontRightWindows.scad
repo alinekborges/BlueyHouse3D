@@ -5,7 +5,7 @@ right_window_width = 8.8;
 right_window_height = 18.33;
 tolerance = 0.2;
 
-right_window_path = rect([right_window_width+tolerance, right_window_height+tolerance], rounding=0.26); // outer rectangle
+right_window_path = rect([right_window_width, right_window_height], rounding=0.26); // outer rectangle
 
 module FrontRightWindow() {
     right_window();
@@ -83,15 +83,15 @@ module right_window() {
     offset_border = offset(right_window_path, delta=border_size/2);
 
     color(COLOR_TRIM)
-    up(0.8)
-    linear_extrude(0.5)
+    up(1-0.4)
+    linear_extrude(0.4)
     difference() {
         polygon(offset_border);
         rect([right_window_width-1, right_window_height-1], rounding=0.2);
     }
 
     color(COLOR_TRIM)
-    linear_extrude(0.8)
+    linear_extrude(1)
     difference() {
         
         right_window_base();
